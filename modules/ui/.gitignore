@@ -1,0 +1,8 @@
+# Webpack bundles
+dist
+
+# documentation
+docs
+
+# webpack visualizer
+webpack/stats

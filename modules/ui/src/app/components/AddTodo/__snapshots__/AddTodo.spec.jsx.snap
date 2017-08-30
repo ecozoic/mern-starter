@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddTodo /> renders without crashing 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <Input
+      action={
+        <Button
+          animated={true}
+          as="button"
+          disabled={true}
+          primary={true}
+          type="submit"
+        >
+          <ButtonContent
+            visible={true}
+          >
+            Add Todo
+          </ButtonContent>
+          <ButtonContent
+            hidden={true}
+          >
+            <Icon
+              as="i"
+              name="plus"
+            />
+          </ButtonContent>
+        </Button>
+      }
+      name="todo"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </form>
+</div>
+`;
