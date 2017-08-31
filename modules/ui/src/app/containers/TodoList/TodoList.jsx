@@ -14,9 +14,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-/**
- * React-redux container for TodoList component
- */
 const TodoListContainer = connect(
   mapStateToProps,
   mapDispatchToProps,

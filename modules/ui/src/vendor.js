@@ -31,6 +31,7 @@ import 'semantic-ui-react/dist/commonjs/elements/Input/Input';
 import 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/dom/ajax';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';

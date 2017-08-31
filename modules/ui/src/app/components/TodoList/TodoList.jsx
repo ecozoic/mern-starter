@@ -7,7 +7,7 @@ import TodoComponent from '../Todo';
 import styles from './TodoList.scss';
 
 /**
- * TodoList component that renders a list of todos
+ * Renders a list of todos
  * @param {Object} props - component props
  * @param {Object[]} props.todos - array of todos
  * @param {Function} props.onTodoClick - function to call when todo is clicked

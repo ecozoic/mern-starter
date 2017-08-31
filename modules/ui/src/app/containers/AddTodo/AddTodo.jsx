@@ -12,9 +12,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-/**
- * React-redux container for Add Todo component
- */
 const AddTodoContainer = connect(
   undefined,
   mapDispatchToProps,

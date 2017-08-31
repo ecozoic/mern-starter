@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Input, Icon } from 'semantic-ui-react';
 
 /**
- * Add Todo component that manages the add todo form
+ * Manages the add todo form
  */
 class AddTodo extends React.Component {
   static propTypes = {
@@ -28,20 +28,11 @@ class AddTodo extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  /**
-   * Called as part of component lifecycle
-   * Calls the specified onInit function
-   */
   componentDidMount() {
     // TODO: only fetch if not initialized
     this.props.onInit();
   }
 
-  /**
-   * Handle form submission
-   * Calls the specified onSubmit function
-   * @param {Object} event - React form submission event
-   */
   handleSubmit(event) {
     const { onSubmit } = this.props;
     const { todo } = this.state;
@@ -57,17 +48,10 @@ class AddTodo extends React.Component {
     this.setState({ todo: '' });
   }
 
-  /**
-   * Handle input change
-   * @param {Object} event - React input change event
-   */
   handleChange(event) {
     this.setState({ todo: event.target.value });
   }
 
-  /**
-   * Render method
-   */
   render() {
     const { todo } = this.state;
 

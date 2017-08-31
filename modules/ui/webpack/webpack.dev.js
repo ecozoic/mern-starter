@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const { PORT, HOST, BASENAME } = process.env;
+const { PORT, HOST, BASENAME, API_URL } = process.env;
 
 // set defaults
 const port = +PORT || 8080;
 const host = HOST || 'localhost';
 const publicPath = BASENAME || '/';
+const apiUrl = API_URL || 'http://localhost:8084';
 
 module.exports = {
   entry: {
@@ -64,5 +65,8 @@ module.exports = {
     publicPath,
     port,
     host,
+    proxy: {
+      '/api': apiUrl,
+    },
   },
 };

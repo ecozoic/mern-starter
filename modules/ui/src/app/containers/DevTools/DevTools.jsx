@@ -3,9 +3,6 @@ import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
-/**
- * Redux DevTools container
- */
 const DevTools = createDevTools(
   <DockMonitor
     toggleVisibilityKey="ctrl-h"

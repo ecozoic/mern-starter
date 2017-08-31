@@ -32,12 +32,12 @@ const REDIS_PORT = process.env.REDIS_PORT || 6379;
 mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`, {
   useMongoClient: true,
 })
-.then((db) => {
-  console.log('Connected to Mongo!');
-}, (err) => {
-  console.log('Mongo connection failed :(');
-  console.log(err);
-});
+  .then(() => {
+    console.log('Connected to Mongo!');
+  }, (err) => {
+    console.log('Mongo connection failed :(');
+    console.log(err);
+  });
 
 // test redis connection
 const redisClient = redis.createClient({ host: REDIS_HOST, port: REDIS_PORT });
@@ -63,18 +63,18 @@ if (NODE_ENV === 'development') {
 
 app.use('/api', todoRouter);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).send('We ain\'t found shit');
 });
 
 if (NODE_ENV === 'development') {
   app.use(errorHandler());
 } else {
-  app.use((err, req, res, next) => {
+  app.use((err, req, res) => {
     res.status(500).send('Shit\'s broke yo');
   });
 }
 
 app.listen(PORT, () => {
-  console.log(`App listening on port: ${PORT} `)
+  console.log(`App listening on port: ${PORT}`);
 });

@@ -1,13 +1,11 @@
 import { combineEpics } from 'redux-observable';
 
-import { fetchTodosEpic } from './todos';
+import { fetchTodosEpic, addTodoEpic, toggleTodoEpic } from './todos';
 
-/**
- * Application root epic
- * @const
- */
 const rootEpic = combineEpics(
   fetchTodosEpic,
+  addTodoEpic,
+  toggleTodoEpic,
 );
 
 export default rootEpic;

@@ -1,25 +1,53 @@
-import _ from 'lodash';
-
 import { ActionTypes } from '../constants';
 
 /**
- * Creates an ADD_TODO action
+ * Creates an action to add a new todo
  * @param {string} text - text describing todo to add
- * @returns {Object} ADD_TODO action
  */
 export const addTodo = text => ({
   type: ActionTypes.ADD_TODO,
   payload: {
-    id: _.uniqueId(),
     text,
-    completed: false,
   },
 });
 
 /**
- * Creates a TOGGLE_TODO action
+ * Creates an action to indicate todo addition process is pending
+ * @param {string } text - text describing todo being added
+ */
+export const addTodoPending = text => ({
+  type: ActionTypes.ADD_TODO_PENDING,
+  meta: {
+    text,
+  },
+});
+
+/**
+ * Creates an action to indicate todo addition process succeeded
+ * @param {Object} todo - normalized todo
+ */
+export const addTodoFulfilled = todo => ({
+  type: ActionTypes.ADD_TODO_FULFILLED,
+  payload: todo,
+});
+
+/**
+ * Creates an action to indicate todo addition process failed
+ * @param {Error} error - error describing failure
+ * @param {string} text - text describing todo that failed to add
+ */
+export const addTodoRejected = (error, text) => ({
+  type: ActionTypes.ADD_TODO_REJECTED,
+  payload: error,
+  error: true,
+  meta: {
+    text,
+  },
+});
+
+/**
+ * Creates an action to toggle completion status of a todo
  * @param {string} id - id of todo to toggle
- * @returns {Object} TOGGLE_TODO action
  */
 export const toggleTodo = id => ({
   type: ActionTypes.TOGGLE_TODO,
@@ -29,25 +57,56 @@ export const toggleTodo = id => ({
 });
 
 /**
- * Creates a FETCH_TODOS action
- * @returns {Object} FETCH_TODOS action
+ * Creates an action to indicate todo toggle process is pending
+ * @param {string} id - id of todo being toggled
+ */
+export const toggleTodoPending = id => ({
+  type: ActionTypes.TOGGLE_TODO_PENDING,
+  meta: {
+    id,
+  },
+});
+
+/**
+ * Creates an action to indicate todo toggle process succeeded
+ * @param {Object} todo - normalized todo
+ */
+export const toggleTodoFulfilled = todo => ({
+  type: ActionTypes.TOGGLE_TODO_FULFILLED,
+  payload: todo,
+});
+
+/**
+ * Creates an action to indicate todo toggle process failed
+ * @param {Error} error - error describing failure
+ * @param {string} id - id of todo that failed to toggle
+ */
+export const toggleTodoRejected = (error, id) => ({
+  type: ActionTypes.TOGGLE_TODO_REJECTED,
+  payload: error,
+  error: true,
+  meta: {
+    id,
+  },
+});
+
+/**
+ * Creates an action to retrieve todos
  */
 export const fetchTodos = () => ({
   type: ActionTypes.FETCH_TODOS,
 });
 
 /**
- * Creates a FETCH_TODOS_PENDING action
- * @returns {Object} FETCH_TODOS_PENDING action
+ * Creates an action to indicate todo retrieval is pending
  */
 export const fetchTodosPending = () => ({
   type: ActionTypes.FETCH_TODOS_PENDING,
 });
 
 /**
- * Creates a FETCH_TODOS_FULFILLED action
+ * Creates an action to indicate todo retrieval was successful
  * @param {Object} todos - normalized todos
- * @returns {Object} FETCH_TODOS_FULFILLED action
  */
 export const fetchTodosFulfilled = todos => ({
   type: ActionTypes.FETCH_TODOS_FULFILLED,
@@ -55,9 +114,8 @@ export const fetchTodosFulfilled = todos => ({
 });
 
 /**
- * Creates a FETCH_TODOS_REJECTED action
- * @param {Error} error - error describing reason for rejection
- * @returns {Object} FETCH_TODOS_REJECTED action
+ * Creates an action to indicate todo retrieval failed
+ * @param {Error} error - error describing failure
  */
 export const fetchTodosRejected = error => ({
   type: ActionTypes.FETCH_TODOS_REJECTED,
