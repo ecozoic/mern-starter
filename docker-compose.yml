@@ -12,9 +12,9 @@ services:
     image: api
     ports:
       - 8084:8080
-    links:
-      - mongo:mongo
-      - redis:redis
+    depends_on:
+      - mongo
+      - redis
   nginx:
     image: nginx
     ports:
@@ -22,8 +22,9 @@ services:
     volumes:
       - dist:/usr/share/nginx/html:ro
       - ./modules/ui/nginx.conf:/etc/nginx/nginx.conf:ro
-    links:
-      - api:api
+    depends_on:
+      - api
+      - ui
   mongo:
     image: mongo
     ports:
@@ -34,17 +35,17 @@ services:
       - 6379:6379
   mongo-express:
     image: mongo-express
-    links:
-      - mongo:mongo
     ports:
       - 8082:8081
+    depends_on:
+      - mongo
   redis-commander:
     image: tenstartups/redis-commander
     command: --redis-host redis
-    links:
-      - redis:redis
     ports:
       - 8081:8081
+    depends_on:
+      - redis
   portainer:
     image: portainer/portainer
     ports:
