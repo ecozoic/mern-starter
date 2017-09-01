@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     lowercase: true,
@@ -19,7 +19,8 @@ const userSchema = new Schema({
 });
 
 // add pre-hook to salt+hash password on save
-userSchema.pre('save', (next) => {
+// DO NOT USE ARROW FNS HERE
+UserSchema.pre('save', function (next) {
   const user = this;
   const SALT_FACTOR = 5;
 
@@ -44,7 +45,8 @@ userSchema.pre('save', (next) => {
 });
 
 // add method to check password
-userSchema.methods.comparePassword = (candidatePassword, cb) => {
+// DO NOT USE ARROW FNS HERE
+UserSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) {
       return cb(err);
@@ -54,4 +56,4 @@ userSchema.methods.comparePassword = (candidatePassword, cb) => {
   });
 };
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('user', UserSchema);

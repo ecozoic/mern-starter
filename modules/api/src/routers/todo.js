@@ -1,8 +1,36 @@
 const express = require('express');
 
 const Todo = require('../models/todo');
+const User = require('../models/user');
+const { generateToken, setUserInfo } = require('../auth/jwt');
+const { auth, login } = require('../auth/middleware');
 
 const router = express.Router();
+
+router
+  .route('/login')
+  .post(login, (req, res) => {
+    const userInfo = setUserInfo(req.user);
+
+    res.status(200).json({
+      token: `Bearer ${generateToken(userInfo)}`,
+      user: userInfo,
+    });
+  });
+
+router
+  .route('/register')
+  .post((req, res) => {
+    const user = new User(req.body);
+    user.save();
+
+    const userInfo = setUserInfo(user);
+
+    res.status(201).json({
+      token: `Bearer ${generateToken(userInfo)}`,
+      user: userInfo,
+    });
+  });
 
 router
   .route('/todos')
@@ -72,7 +100,7 @@ router
       res.json(todo);
     });
   })
-  .delete((req, res) => {
+  .delete(auth, (req, res) => {
     const id = req.params.id;
 
     Todo.findByIdAndRemove(id, (err, todo) => {
