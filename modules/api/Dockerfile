@@ -7,7 +7,8 @@ ENV PORT=8080 \
     MONGO_HOST=mongo \
     MONGO_PORT=27017 \
     REDIS_HOST=redis \
-    REDIS_PORT=6379
+    REDIS_PORT=6379 \
+    JWT_SECRET=yolo
 
 RUN yarn
 CMD [ "yarn", "serve" ]
