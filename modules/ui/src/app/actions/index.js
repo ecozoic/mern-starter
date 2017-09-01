@@ -47,23 +47,23 @@ export const addTodoRejected = (error, text) => ({
 
 /**
  * Creates an action to toggle completion status of a todo
- * @param {string} id - id of todo to toggle
+ * @param {string} _id - id of todo to toggle
  */
-export const toggleTodo = id => ({
+export const toggleTodo = _id => ({
   type: ActionTypes.TOGGLE_TODO,
   payload: {
-    id,
+    _id,
   },
 });
 
 /**
  * Creates an action to indicate todo toggle process is pending
- * @param {string} id - id of todo being toggled
+ * @param {string} _id - id of todo being toggled
  */
-export const toggleTodoPending = id => ({
+export const toggleTodoPending = _id => ({
   type: ActionTypes.TOGGLE_TODO_PENDING,
   meta: {
-    id,
+    _id,
   },
 });
 
@@ -79,14 +79,14 @@ export const toggleTodoFulfilled = todo => ({
 /**
  * Creates an action to indicate todo toggle process failed
  * @param {Error} error - error describing failure
- * @param {string} id - id of todo that failed to toggle
+ * @param {string} _id - id of todo that failed to toggle
  */
-export const toggleTodoRejected = (error, id) => ({
+export const toggleTodoRejected = (error, _id) => ({
   type: ActionTypes.TOGGLE_TODO_REJECTED,
   payload: error,
   error: true,
   meta: {
-    id,
+    _id,
   },
 });
 

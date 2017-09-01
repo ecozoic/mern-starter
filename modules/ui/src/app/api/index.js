@@ -42,8 +42,8 @@ export const addTodo = text => Observable.ajax({
  * @param {Object} todo - todo to toggle
  * @returns Observable of normalized todo that was toggled
  */
-export const toggleTodo = ({ id, completed }) => Observable.ajax({
-  url: `${TODOS_RESOURCE}/${id}`,
+export const toggleTodo = ({ _id, completed }) => Observable.ajax({
+  url: `${TODOS_RESOURCE}/${_id}`,
   method: 'PATCH',
   responseType: 'json',
   headers,

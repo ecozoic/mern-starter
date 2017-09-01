@@ -11,6 +11,7 @@
     "import/prefer-default-export": 0,
     "react/no-unused-prop-types": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
-    "no-console": 0
+    "no-console": 0,
+    "no-underscore-dangle": 0
   }
 }

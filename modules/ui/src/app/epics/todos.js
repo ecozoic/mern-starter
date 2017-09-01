@@ -38,9 +38,9 @@ export const addTodoEpic = (action$, store) =>
 export const toggleTodoEpic = (action$, store) =>
   action$
     .ofType(ActionTypes.TOGGLE_TODO)
-    .do(action => store.dispatch(toggleTodoPending(action.payload.id)))
+    .do(action => store.dispatch(toggleTodoPending(action.payload._id)))
     .mergeMap(action =>
-      toggleTodo(getTodoById(store.getState(), action.payload.id))
+      toggleTodo(getTodoById(store.getState(), action.payload._id))
         .map(todo => toggleTodoFulfilled(todo))
-        .catch(error => Observable.of(toggleTodoRejected(error, action.payload.id))),
+        .catch(error => Observable.of(toggleTodoRejected(error, action.payload._id))),
     );

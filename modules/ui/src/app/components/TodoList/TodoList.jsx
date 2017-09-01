@@ -16,8 +16,8 @@ const TodoList = ({ todos, onTodoClick }) => (
   <ul className={styles.todoList}>
     {todos.map(todo => (
       <TodoComponent
-        key={todo.id}
-        onClick={() => onTodoClick(todo.id)}
+        key={todo._id}
+        onClick={() => onTodoClick(todo._id)}
         completed={todo.completed}
         text={todo.text}
       />
