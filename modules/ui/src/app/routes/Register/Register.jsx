@@ -1,27 +1,21 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
-{{#if styles}}
 
-import styles from './{{name}}.scss';
-{{/if}}
+import styles from './Register.scss';
 
-const {{name}} = () => (
-  {{#if styles}}
-  <div className={styles.{{camelCase name ~}} }>
-  {{else}}
-  <div>
-  {{/if}}
+const Register = () => (
+  <div className={styles.register}>
     <Helmet>
-      <title>{{title}}</title>
+      <title>Register</title>
     </Helmet>
   </div>
 );
 
-{{name}}.propTypes = {
+Register.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
 };
 
-export default {{name}};
+export default Register;

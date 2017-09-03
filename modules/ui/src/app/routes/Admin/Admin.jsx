@@ -1,27 +1,21 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
-{{#if styles}}
 
-import styles from './{{name}}.scss';
-{{/if}}
+import styles from './Admin.scss';
 
-const {{name}} = () => (
-  {{#if styles}}
-  <div className={styles.{{camelCase name ~}} }>
-  {{else}}
-  <div>
-  {{/if}}
+const Admin = () => (
+  <div className={styles.admin}>
     <Helmet>
-      <title>{{title}}</title>
+      <title>Admin</title>
     </Helmet>
   </div>
 );
 
-{{name}}.propTypes = {
+Admin.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
 };
 
-export default {{name}};
+export default Admin;
