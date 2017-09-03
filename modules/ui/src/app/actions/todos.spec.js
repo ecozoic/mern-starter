@@ -9,7 +9,7 @@ import {
   fetchTodosPending,
   fetchTodosFulfilled,
   fetchTodosRejected,
-} from './';
+} from './todos';
 
 describe('addTodo', () => {
   it('creates a valid action', () => {
