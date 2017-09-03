@@ -104,6 +104,7 @@
     "react-router-dom": "4.2.2",
     "react-router-prop-types": "0.0.1",
     "redux": "3.7.2",
+    "redux-form": "7.0.3",
     "redux-observable": "0.16.0",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",

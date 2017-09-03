@@ -27,3 +27,19 @@ export const getUser = state => state.auth.user;
  * @returns {string} token
  */
 export const getToken = state => state.auth.token;
+
+/**
+ * Returns pending status of specified action type
+ * @param {Object} state - Redux state
+ * @param {string} actionType - action type
+ * @returns {boolean} boolean indicating pending status of action
+ */
+export const isActionPending = (state, actionType) => !!state.async.pending[actionType];
+
+/**
+ * Returns error status of specified action type
+ * @param {Object} state - Redux state
+ * @param {string} actionType - action type
+ * @returns {boolean} boolean indicating error status of action
+ */
+export const isActionRejected = (state, actionType) => !!state.async.error[actionType];

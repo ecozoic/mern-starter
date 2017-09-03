@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
 import { todosReducer as todos } from './todos';
 import { authReducer as auth } from './auth';
@@ -8,6 +9,7 @@ const rootReducer = combineReducers({
   todos,
   auth,
   async,
+  form,
 });
 
 export const INITIAL_STATE = {};
