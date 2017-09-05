@@ -13,7 +13,7 @@ router
     const userInfo = setUserInfo(req.user);
 
     res.status(200).json({
-      token: `Bearer ${generateToken(userInfo)}`,
+      token: generateToken(userInfo),
       user: userInfo,
     });
   });
@@ -27,7 +27,7 @@ router
     const userInfo = setUserInfo(user);
 
     res.status(201).json({
-      token: `Bearer ${generateToken(userInfo)}`,
+      token: generateToken(userInfo),
       user: userInfo,
     });
   });

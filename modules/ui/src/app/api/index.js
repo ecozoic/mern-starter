@@ -90,7 +90,7 @@ export const deleteTodo = (_id, token) => Observable.ajax({
   responseType: ResponseTypes.JSON,
   headers: {
     ...headers,
-    [HttpHeaders.AUTHORIZATION]: token,
+    [HttpHeaders.AUTHORIZATION]: `Bearer ${token}`,
   },
 });
 
