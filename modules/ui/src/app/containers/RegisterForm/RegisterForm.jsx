@@ -7,9 +7,11 @@ import { register } from '../../actions';
 import RegisterForm from '../../components/RegisterForm';
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: ({ username, password }) => {
-    dispatch(register(username, password));
-  },
+  onSubmit: ({ username, password }) => (
+    new Promise((resolve, reject) => {
+      dispatch(register(username, password, resolve, reject));
+    })
+  ),
 });
 
 export default compose(

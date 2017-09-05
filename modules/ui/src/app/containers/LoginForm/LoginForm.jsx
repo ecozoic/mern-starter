@@ -7,9 +7,11 @@ import { login } from '../../actions';
 import LoginForm from '../../components/LoginForm';
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: ({ username, password }) => {
-    dispatch(login(username, password));
-  },
+  onSubmit: ({ username, password }) => (
+    new Promise((resolve, reject) => {
+      dispatch(login(username, password, resolve, reject));
+    })
+  ),
 });
 
 export default compose(

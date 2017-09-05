@@ -3,6 +3,7 @@ import { trimSuffix } from '../lib';
 
 export const INITIAL_STATE = {
   pending: {},
+  fulfilled: {},
   error: {},
 };
 
@@ -15,6 +16,10 @@ export const asyncReducer = (prevState = INITIAL_STATE, action) => {
       pending: {
         ...prevState.pending,
         [key]: true,
+      },
+      fulfilled: {
+        ...prevState.fulfilled,
+        [key]: false,
       },
       error: {
         ...prevState.error,
@@ -30,6 +35,10 @@ export const asyncReducer = (prevState = INITIAL_STATE, action) => {
         ...prevState.pending,
         [key]: false,
       },
+      fulfilled: {
+        ...prevState.fulfilled,
+        [key]: true,
+      },
       error: {
         ...prevState.error,
         [key]: false,
@@ -42,6 +51,10 @@ export const asyncReducer = (prevState = INITIAL_STATE, action) => {
       ...prevState,
       pending: {
         ...prevState.pending,
+        [key]: false,
+      },
+      fulfilled: {
+        ...prevState.fulfilled,
         [key]: false,
       },
       error: {

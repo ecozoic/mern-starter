@@ -18,7 +18,9 @@ export const loginEpic = (action$, store) =>
     .mergeMap(action =>
       login(action.payload.username, action.payload.password)
         .map(userInfo => loginFulfilled(userInfo.user, userInfo.token))
-        .catch(error => Observable.of(loginRejected(error, action.payload.username))),
+        .do(() => action.payload.resolve())
+        .catch(error => Observable.of(loginRejected(error, action.payload.username)))
+        .do(() => action.payload.reject()),
     );
 
 export const registerEpic = (action$, store) =>
@@ -28,5 +30,7 @@ export const registerEpic = (action$, store) =>
     .mergeMap(action =>
       register(action.payload.username, action.payload.password)
         .map(userInfo => registerFulfilled(userInfo.user, userInfo.token))
-        .catch(error => Observable.of(registerRejected(error, action.payload.username))),
+        .do(() => action.payload.resolve())
+        .catch(error => Observable.of(registerRejected(error, action.payload.username)))
+        .do(() => action.payload.reject()),
     );

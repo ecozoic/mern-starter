@@ -5,11 +5,13 @@ import { ActionTypes } from '../constants';
  * @param {string} username
  * @param {string} password
  */
-export const login = (username, password) => ({
+export const login = (username, password, resolve, reject) => ({
   type: ActionTypes.LOGIN,
   payload: {
     username,
     password,
+    resolve,
+    reject,
   },
 });
 
@@ -42,11 +44,13 @@ export const loginRejected = (error, username) => ({
  * @param {string} username
  * @param {string} password
  */
-export const register = (username, password) => ({
+export const register = (username, password, resolve, reject) => ({
   type: ActionTypes.REGISTER,
   payload: {
     username,
     password,
+    resolve,
+    reject,
   },
 });
 
