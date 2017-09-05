@@ -6,7 +6,7 @@ import { todoSchema, todoListSchema } from '../models';
 const Resources = {
   TODOS: '/api/todos',
   LOGIN: '/api/login',
-  REGISTER: '/api/register',
+  REGISTER: '/api/users',
 };
 
 const HttpMethods = {

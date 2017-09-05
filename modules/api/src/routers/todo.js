@@ -19,7 +19,7 @@ router
   });
 
 router
-  .route('/register')
+  .route('/users')
   .post((req, res) => {
     const user = new User(req.body);
     user.save();
