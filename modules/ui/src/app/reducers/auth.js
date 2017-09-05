@@ -19,6 +19,12 @@ export const authReducer = (prevState = INITIAL_STATE, action) => {
         user: action.payload.user,
         token: action.payload.token,
       };
+    case ActionTypes.LOGOUT:
+      return {
+        ...prevState,
+        user: null,
+        token: null,
+      };
     default:
       return prevState;
   }

@@ -7,6 +7,7 @@ import {
   registerPending,
   registerFulfilled,
   registerRejected,
+  tokenRemoved,
 } from '../actions';
 import { login, register } from '../api';
 import config from '../config';
@@ -41,3 +42,12 @@ export const registerEpic = (action$, store) =>
         .catch(error => Observable.of(registerRejected(error, action.payload.username)))
         .do(() => action.payload.reject()),
     );
+
+export const logoutEpic = action$ =>
+  action$
+    .ofType(ActionTypes.LOGOUT)
+    .do(() =>
+      window.localStorage.removeItem(config.jwtStorageKey),
+    )
+    .map(() => tokenRemoved())
+  ;

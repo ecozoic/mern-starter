@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
 import { fetchTodosEpic, addTodoEpic, toggleTodoEpic, deleteTodoEpic } from './todos';
-import { loginEpic, registerEpic } from './auth';
+import { loginEpic, registerEpic, logoutEpic } from './auth';
 
 const rootEpic = combineEpics(
   fetchTodosEpic,
@@ -10,6 +10,7 @@ const rootEpic = combineEpics(
   deleteTodoEpic,
   loginEpic,
   registerEpic,
+  logoutEpic,
 );
 
 export default rootEpic;

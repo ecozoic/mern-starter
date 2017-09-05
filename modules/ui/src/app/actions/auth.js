@@ -77,3 +77,14 @@ export const registerRejected = (error, username) => ({
   },
   error: true,
 });
+
+/**
+ * Creates an action to logout current user
+ */
+export const logout = () => ({
+  type: ActionTypes.LOGOUT,
+});
+
+export const tokenRemoved = () => ({
+  type: ActionTypes.TOKEN_REMOVED,
+});

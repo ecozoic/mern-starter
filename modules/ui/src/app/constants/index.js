@@ -6,6 +6,8 @@ const FETCH_TODOS = 'FETCH_TODOS';
 const DELETE_TODO = 'DELETE_TODO';
 const LOGIN = 'LOGIN';
 const REGISTER = 'REGISTER';
+const LOGOUT = 'LOGOUT';
+const TOKEN_REMOVED = 'TOKEN_REMOVED';
 
 export const AsyncSuffixes = {
   PENDING: '_PENDING',
@@ -31,6 +33,9 @@ export const ActionTypes = {
 
   REGISTER,
   ...getAsyncActionTypes(REGISTER),
+
+  LOGOUT,
+  TOKEN_REMOVED,
 };
 
 export const Paths = {
