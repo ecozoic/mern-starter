@@ -3,7 +3,7 @@ import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
-const DevTools = createDevTools(
+export default createDevTools(
   <DockMonitor
     toggleVisibilityKey="ctrl-h"
     changePositionKey="ctrl-q"
@@ -11,5 +11,3 @@ const DevTools = createDevTools(
     <LogMonitor theme="monokai" />
   </DockMonitor>,
 );
-
-export default DevTools;

@@ -8,8 +8,6 @@ const mapStateToProps = state => ({
   isAuthenticated: !!getUser(state) && !!getToken(state),
 });
 
-const AuthRouteContainer = connect(
+export default connect(
   mapStateToProps,
 )(AuthRoute);
-
-export default AuthRouteContainer;

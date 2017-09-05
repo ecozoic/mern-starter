@@ -12,9 +12,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const AddTodoContainer = connect(
+export default connect(
   undefined,
   mapDispatchToProps,
 )(AddTodo);
-
-export default AddTodoContainer;
