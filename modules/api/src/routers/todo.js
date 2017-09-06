@@ -19,6 +19,17 @@ router
   });
 
 router
+  .route('/authenticate')
+  .post(auth, (req, res) => {
+    const userInfo = setUserInfo(req.user);
+
+    res.status(200).json({
+      token: generateToken(userInfo),
+      user: userInfo,
+    });
+  });
+
+router
   .route('/users')
   .post((req, res) => {
     const user = new User(req.body);

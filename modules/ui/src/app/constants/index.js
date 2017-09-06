@@ -8,6 +8,7 @@ const LOGIN = 'LOGIN';
 const REGISTER = 'REGISTER';
 const LOGOUT = 'LOGOUT';
 const TOKEN_REMOVED = 'TOKEN_REMOVED';
+const AUTHENTICATE = 'AUTHENTICATE';
 
 export const AsyncSuffixes = {
   PENDING: '_PENDING',
@@ -33,6 +34,9 @@ export const ActionTypes = {
 
   REGISTER,
   ...getAsyncActionTypes(REGISTER),
+
+  AUTHENTICATE,
+  ...getAsyncActionTypes(AUTHENTICATE),
 
   LOGOUT,
   TOKEN_REMOVED,

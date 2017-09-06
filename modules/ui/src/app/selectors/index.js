@@ -43,3 +43,11 @@ export const isActionPending = (state, actionType) => !!state.async.pending[acti
  * @returns {boolean} boolean indicating error status of action
  */
 export const isActionRejected = (state, actionType) => !!state.async.error[actionType];
+
+/**
+ * Returns fulfilled status of specified action type
+ * @param {Object} state - Redux state
+ * @param {string} actionType - action type
+ * @returns {boolean} boolean indicating fulfilled status of action
+ */
+export const isActionFulfilled = (state, actionType) => !!state.async.fulfilled[actionType];

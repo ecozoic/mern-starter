@@ -8,12 +8,8 @@ export const INITIAL_STATE = {
 export const authReducer = (prevState = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.LOGIN_FULFILLED:
-      return {
-        ...prevState,
-        user: action.payload.user,
-        token: action.payload.token,
-      };
     case ActionTypes.REGISTER_FULFILLED:
+    case ActionTypes.AUTHENTICATE_FULFILLED:
       return {
         ...prevState,
         user: action.payload.user,

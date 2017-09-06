@@ -7,6 +7,7 @@ const Resources = {
   TODOS: '/api/todos',
   LOGIN: '/api/login',
   REGISTER: '/api/users',
+  AUTHENTICATE: '/api/authenticate',
 };
 
 const HttpMethods = {
@@ -125,5 +126,20 @@ export const register = (username, password) => Observable.ajax({
   body: {
     username,
     password,
+  },
+}).map(ajaxResponse => ajaxResponse.response);
+
+/**
+ * Validate JWT
+ * @param {string} token - JWT
+ * @returns Observable of the user and JWT
+ */
+export const authenticate = token => Observable.ajax({
+  url: Resources.AUTHENTICATE,
+  method: HttpMethods.POST,
+  responseType: ResponseTypes.JSON,
+  headers: {
+    ...headers,
+    [HttpHeaders.AUTHORIZATION]: `Bearer ${token}`,
   },
 }).map(ajaxResponse => ajaxResponse.response);

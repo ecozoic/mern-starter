@@ -8,8 +8,11 @@ import {
   registerFulfilled,
   registerRejected,
   tokenRemoved,
+  authenticatePending,
+  authenticateFulfilled,
+  authenticateRejected,
 } from '../actions';
-import { login, register } from '../api';
+import { login, register, authenticate } from '../api';
 import config from '../config';
 import { ActionTypes } from '../constants';
 
@@ -20,12 +23,16 @@ export const loginEpic = (action$, store) =>
     .mergeMap(action =>
       login(action.payload.username, action.payload.password)
         .map(userInfo => loginFulfilled(userInfo.user, userInfo.token))
-        .do(() => action.payload.resolve())
-        .do(loginAction =>
-          window.localStorage.setItem(config.jwtStorageKey, loginAction.payload.token),
-        )
-        .catch(error => Observable.of(loginRejected(error, action.payload.username)))
-        .do(() => action.payload.reject()),
+        .do((loginAction) => {
+          action.payload.resolve();
+
+          window.localStorage.setItem(config.jwtStorageKey, loginAction.payload.token);
+        })
+        .catch((error) => {
+          action.payload.reject();
+
+          return Observable.of(loginRejected(error, action.payload.username));
+        }),
     );
 
 export const registerEpic = (action$, store) =>
@@ -35,12 +42,16 @@ export const registerEpic = (action$, store) =>
     .mergeMap(action =>
       register(action.payload.username, action.payload.password)
         .map(userInfo => registerFulfilled(userInfo.user, userInfo.token))
-        .do(() => action.payload.resolve())
-        .do(registerAction =>
-          window.localStorage.setItem(config.jwtStorageKey, registerAction.payload.token),
-        )
-        .catch(error => Observable.of(registerRejected(error, action.payload.username)))
-        .do(() => action.payload.reject()),
+        .do((registerAction) => {
+          action.payload.resolve();
+
+          window.localStorage.setItem(config.jwtStorageKey, registerAction.payload.token);
+        })
+        .catch((error) => {
+          action.payload.reject();
+
+          return Observable.of(registerRejected(error, action.payload.username));
+        }),
     );
 
 export const logoutEpic = action$ =>
@@ -51,3 +62,20 @@ export const logoutEpic = action$ =>
     )
     .map(() => tokenRemoved())
   ;
+
+export const authenticateEpic = (action$, store) =>
+  action$
+    .ofType(ActionTypes.AUTHENTICATE)
+    .do(() => store.dispatch(authenticatePending()))
+    .mergeMap(action =>
+      authenticate(action.payload.token)
+        .map(userInfo => authenticateFulfilled(userInfo.user, userInfo.token))
+        .do(authenticateAction =>
+          window.localStorage.setItem(config.jwtStorageKey, authenticateAction.payload.token),
+        )
+        .catch((error) => {
+          window.localStorage.removeItem(config.jwtStorageKey);
+
+          return Observable.of(authenticateRejected(error));
+        }),
+    );

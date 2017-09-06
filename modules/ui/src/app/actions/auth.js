@@ -88,3 +88,31 @@ export const logout = () => ({
 export const tokenRemoved = () => ({
   type: ActionTypes.TOKEN_REMOVED,
 });
+
+/**
+ * Creates an action to authenticate current user via JWT
+ */
+export const authenticate = token => ({
+  type: ActionTypes.AUTHENTICATE,
+  payload: {
+    token,
+  },
+});
+
+export const authenticatePending = () => ({
+  type: ActionTypes.AUTHENTICATE_PENDING,
+});
+
+export const authenticateFulfilled = (user, token) => ({
+  type: ActionTypes.AUTHENTICATE_FULFILLED,
+  payload: {
+    user,
+    token,
+  },
+});
+
+export const authenticateRejected = error => ({
+  type: ActionTypes.AUTHENTICATE_REJECTED,
+  payload: error,
+  error: true,
+});
