@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 import { authenticate } from '../../actions';
 import { ActionTypes } from '../../constants';
@@ -14,7 +16,10 @@ const mapDispatchToProps = dispatch => ({
   authenticate: token => dispatch(authenticate(token)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(Authenticate);

@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Paths } from '../constants';
 import Authenticate from '../containers/Authenticate';
 import AuthRoute from '../containers/AuthRoute';
+import GuestRoute from '../containers/GuestRoute';
 
 import Home from './Home';
 import PageNotFound from './PageNotFound';
@@ -15,8 +16,8 @@ const routes = (
   <Authenticate>
     <Switch>
       <Route exact path={Paths.HOME} component={Home} />
-      <Route path={Paths.LOGIN} component={Login} />
-      <Route path={Paths.REGISTER} component={Register} />
+      <GuestRoute path={Paths.LOGIN} component={Login} />
+      <GuestRoute path={Paths.REGISTER} component={Register} />
       <AuthRoute path={Paths.ADMIN} component={Admin} />
       <Route component={PageNotFound} />
     </Switch>

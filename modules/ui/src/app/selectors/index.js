@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 /**
  * Gets todos
  * @param {Object} state - Redux state
@@ -27,6 +29,17 @@ export const getUser = state => state.auth.user;
  * @returns {string} token
  */
 export const getToken = state => state.auth.token;
+
+/**
+ * Returns current authentication status of user
+ * @param {Object} state - Redux state
+ * @returns {boolean} bool indicating auth status
+ */
+export const isAuthenticated = createSelector(
+  getUser,
+  getToken,
+  (user, token) => !!user && !!token,
+);
 
 /**
  * Returns pending status of specified action type

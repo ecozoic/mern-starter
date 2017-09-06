@@ -6,8 +6,8 @@ import { isAuthenticated } from '../../selectors';
 import ConditionalRoute from '../../components/ConditionalRoute';
 
 const mapStateToProps = state => ({
-  condition: isAuthenticated(state),
-  redirectTo: Paths.LOGIN,
+  condition: !isAuthenticated(state),
+  redirectTo: Paths.HOME,
 });
 
 export default connect(
