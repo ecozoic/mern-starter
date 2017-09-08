@@ -1,7 +1,9 @@
 {
-  "name": "react-starter",
-  "version": "5.0.0",
-  "description": "A scaffold for React+Redux+Rxjs UIs powered by Webpack",
+  "name": "ui",
+  "version": "0.0.0",
+  "author": "ecozoic <johnnn.mitchell@gmail.com>",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "postinstall": "yarn build",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
@@ -23,16 +25,6 @@
     "plop": "plop",
     "cosmos": "cross-env NODE_ENV=development cosmos"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ecozoic/react-starter.git"
-  },
-  "author": "John Mitchell <johnnn.mitchell@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ecozoic/react-starter/issues"
-  },
-  "homepage": "https://github.com/ecozoic/react-starter#readme",
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",

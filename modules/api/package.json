@@ -1,13 +1,13 @@
 {
-  "name": "express-starter",
+  "name": "api",
   "version": "0.0.0",
-  "repository": "git@github.com:ecozoic/express-starter.git",
   "author": "ecozoic <johnnn.mitchell@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon --inspect src/main.js",
     "serve": "cross-env NODE_ENV=production node src/main.js"
   },
+  "private": true,
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "3.5.0",
