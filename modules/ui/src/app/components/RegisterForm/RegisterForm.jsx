@@ -9,7 +9,7 @@ import { Paths } from '../../constants';
 
 import SemanticField from '../SemanticField';
 
-const RegisterForm = ({ handleSubmit }) => (
+const RegisterForm = ({ handleSubmit, hasSubmitError }) => (
   <Grid
     textAlign="center"
     style={{ height: '100%' }}
@@ -60,12 +60,18 @@ const RegisterForm = ({ handleSubmit }) => (
       <Message>
         Already have an account? <Link to={Paths.LOGIN}>Login</Link>
       </Message>
+      {hasSubmitError &&
+        <Message error>
+          Invalid username or password
+        </Message>
+      }
     </Grid.Column>
   </Grid>
 );
 
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  hasSubmitError: PropTypes.bool.isRequired,
 };
 
 export default RegisterForm;

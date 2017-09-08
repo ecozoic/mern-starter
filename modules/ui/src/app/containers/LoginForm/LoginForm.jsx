@@ -3,8 +3,14 @@ import { reduxForm } from 'redux-form';
 import { compose } from 'redux';
 
 import { login } from '../../actions';
+import { ActionTypes } from '../../constants';
+import { isActionRejected } from '../../selectors';
 
 import LoginForm from '../../components/LoginForm';
+
+const mapStateToProps = state => ({
+  hasSubmitError: isActionRejected(state, ActionTypes.LOGIN),
+});
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: ({ username, password }) => (
@@ -16,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   connect(
-    undefined,
+    mapStateToProps,
     mapDispatchToProps,
   ),
   reduxForm({

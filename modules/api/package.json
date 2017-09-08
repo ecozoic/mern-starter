@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "author": "ecozoic <johnnn.mitchell@gmail.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon --inspect src/main.js",
     "serve": "cross-env NODE_ENV=production node src/main.js"
   },
-  "private": true,
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "3.5.0",
@@ -17,7 +17,7 @@
     "dotenv": "4.0.0",
     "errorhandler": "1.5.0",
     "express": "4.15.4",
-    "jsonwebtoken": "7.4.3",
+    "jsonwebtoken": "8.0.0",
     "mongoose": "4.11.10",
     "morgan": "1.8.2",
     "passport": "0.4.0",
