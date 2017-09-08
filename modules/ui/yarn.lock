@@ -2419,9 +2419,9 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-documentation@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.0.tgz#6973aa40bd75f065e7def1df51dbbab86637cfa4"
+documentation@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/documentation/-/documentation-5.3.1.tgz#f7fda4b65ad96b7686976173b0c573f53448ed3e"
   dependencies:
     ansi-html "^0.0.7"
     babel-core "^6.17.0"
@@ -9284,9 +9284,9 @@ webpack-visualizer-plugin@0.1.11:
     react "^0.14.0"
     react-dom "^0.14.0"
 
-webpack@3.5.5:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.5.tgz#3226f09fc8b3e435ff781e7af34f82b68b26996c"
+webpack@3.5.6:
+  version "3.5.6"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.6.tgz#a492fb6c1ed7f573816f90e00c8fbb5a20cc5c36"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
