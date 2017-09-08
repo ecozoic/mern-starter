@@ -4,8 +4,6 @@ services:
     build: ./modules/ui
     image: ui
     container_name: ui
-    ports:
-      - 8083:8080
     volumes:
       - dist:/opt/ui/dist
   api:
@@ -34,7 +32,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - data:/data/db
+      - data_db:/data/db
   redis:
     image: redis
     container_name: redis
@@ -58,10 +56,13 @@ services:
   portainer:
     image: portainer/portainer
     container_name: portainer
+    command: --no-auth
     ports:
       - 9000:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - data_portainer:/data
 volumes:
   dist:
-  data:
+  data_db:
+  data_portainer:
