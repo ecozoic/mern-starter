@@ -2,28 +2,26 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { Image, Header, Container, Segment } from 'semantic-ui-react';
+
 import AddTodo from '../../containers/AddTodo';
 import TodoList from '../../containers/TodoList';
 
 import img from '../../../react.png';
-import styles from './Home.scss';
 
-/**
- * Homepage component
- */
 const Home = () => (
-  <div className={styles.home}>
+  <div>
     <Helmet>
       <title>Todo List</title>
     </Helmet>
-    <div className={styles.todos}>
-      <div className={styles.imageContainer}>
-        <img className={styles.image} src={img} alt="logo" />
-      </div>
-      <h1 className={styles.header}>Todo List</h1>
-      <AddTodo />
-      <TodoList />
-    </div>
+    <Container>
+      <Image shape="circular" centered src={img} alt="logo" />
+      <Header as="h1" textAlign="center">Todo List</Header>
+      <Segment style={{ maxWidth: 450, margin: '0 auto' }}>
+        <AddTodo />
+        <TodoList />
+      </Segment>
+    </Container>
   </div>
 );
 

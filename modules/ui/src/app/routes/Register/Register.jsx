@@ -2,14 +2,20 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { Container } from 'semantic-ui-react';
+
 import RegisterForm from '../../containers/RegisterForm';
 
+import styles from './Register.scss';
+
 const Register = () => (
-  <div>
+  <div className={styles.register}>
     <Helmet>
       <title>Register</title>
     </Helmet>
-    <RegisterForm />
+    <Container className={styles.container}>
+      <RegisterForm />
+    </Container>
   </div>
 );
 

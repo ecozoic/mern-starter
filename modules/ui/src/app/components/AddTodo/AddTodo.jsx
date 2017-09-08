@@ -63,6 +63,7 @@ class AddTodo extends React.Component {
             type="text"
             value={todo}
             onChange={this.handleChange}
+            style={{ width: '100%' }}
             action={
               <Button
                 type="submit"

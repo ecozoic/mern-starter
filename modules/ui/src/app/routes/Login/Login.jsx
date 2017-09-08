@@ -2,14 +2,20 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { Container } from 'semantic-ui-react';
+
 import LoginForm from '../../containers/LoginForm';
 
+import styles from './Login.scss';
+
 const Login = () => (
-  <div>
+  <div className={styles.login}>
     <Helmet>
       <title>Login</title>
     </Helmet>
-    <LoginForm />
+    <Container className={styles.container}>
+      <LoginForm />
+    </Container>
   </div>
 );
 

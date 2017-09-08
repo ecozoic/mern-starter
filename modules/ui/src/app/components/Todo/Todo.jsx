@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { List } from 'semantic-ui-react';
+
 import styles from './Todo.scss';
 
 /**
@@ -18,12 +20,12 @@ const Todo = ({ onClick, completed, text }) => {
   );
 
   return (
-    <li
+    <List.Item
       className={className}
       onClick={onClick}
     >
       {text}
-    </li>
+    </List.Item>
   );
 };
 

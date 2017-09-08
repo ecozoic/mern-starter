@@ -4,9 +4,6 @@ import { Redirect } from 'react-router-dom';
 
 import { Paths } from '../../constants';
 
-/**
- * 404 component
- */
 const PageNotFound = () => (
   <Redirect to={Paths.HOME} />
 );

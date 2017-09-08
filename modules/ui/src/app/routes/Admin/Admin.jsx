@@ -2,11 +2,16 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { Container, Header } from 'semantic-ui-react';
+
 const Admin = () => (
   <div>
     <Helmet>
       <title>Admin</title>
     </Helmet>
+    <Container>
+      <Header as="h1" textAlign="center">SUPER SECRET AREA</Header>
+    </Container>
   </div>
 );
 

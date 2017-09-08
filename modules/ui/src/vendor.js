@@ -26,6 +26,7 @@ import 'lodash/identity';
 // semantic ui
 // need to use this syntax for babel-plugin-lodash to work w/ code splitting
 import 'semantic-ui-react/dist/commonjs/elements/Button/Button';
+import 'semantic-ui-react/dist/commonjs/elements/Container/Container';
 import 'semantic-ui-react/dist/commonjs/elements/Header/Header';
 import 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 import 'semantic-ui-react/dist/commonjs/elements/Image/Image';
