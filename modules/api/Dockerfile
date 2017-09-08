@@ -1,4 +1,4 @@
-FROM node:6.11.2
+FROM node:6.11.3
 
 COPY . /opt/api
 WORKDIR /opt/api
