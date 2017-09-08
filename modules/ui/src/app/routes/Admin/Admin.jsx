@@ -4,13 +4,16 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { Container, Header } from 'semantic-ui-react';
 
+import TodoTable from '../../containers/TodoTable';
+
 const Admin = () => (
   <div>
     <Helmet>
       <title>Admin</title>
     </Helmet>
     <Container style={{ paddingTop: 100 }}>
-      <Header as="h1" textAlign="center">SUPER SECRET AREA</Header>
+      <Header as="h1" textAlign="center">Todo Administration</Header>
+      <TodoTable />
     </Container>
   </div>
 );

@@ -39,6 +39,7 @@ import 'semantic-ui-react/dist/commonjs/collections/Form/Form';
 import 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
 import 'semantic-ui-react/dist/commonjs/collections/Menu/Menu';
 import 'semantic-ui-react/dist/commonjs/collections/Message/Message';
+import 'semantic-ui-react/dist/commonjs/collections/Table/Table';
 
 // rxjs
 import 'rxjs/Observable';
