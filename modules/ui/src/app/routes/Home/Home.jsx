@@ -14,7 +14,7 @@ const Home = () => (
     <Helmet>
       <title>Todo List</title>
     </Helmet>
-    <Container>
+    <Container style={{ paddingTop: 100 }}>
       <Image shape="circular" centered src={img} alt="logo" />
       <Header as="h1" textAlign="center">Todo List</Header>
       <Segment style={{ maxWidth: 450, margin: '0 auto' }}>

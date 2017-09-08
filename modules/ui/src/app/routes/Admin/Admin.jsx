@@ -9,7 +9,7 @@ const Admin = () => (
     <Helmet>
       <title>Admin</title>
     </Helmet>
-    <Container>
+    <Container style={{ paddingTop: 100 }}>
       <Header as="h1" textAlign="center">SUPER SECRET AREA</Header>
     </Container>
   </div>

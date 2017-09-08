@@ -22,6 +22,7 @@ import 'normalizr';
 // e.g. import 'lodash/map';
 import 'lodash/uniqueId';
 import 'lodash/identity';
+import 'lodash/uniq';
 
 // semantic ui
 // need to use this syntax for babel-plugin-lodash to work w/ code splitting
@@ -36,6 +37,7 @@ import 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
 
 import 'semantic-ui-react/dist/commonjs/collections/Form/Form';
 import 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
+import 'semantic-ui-react/dist/commonjs/collections/Menu/Menu';
 import 'semantic-ui-react/dist/commonjs/collections/Message/Message';
 
 // rxjs

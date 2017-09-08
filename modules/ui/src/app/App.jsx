@@ -2,6 +2,8 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 
+import Header from './containers/Header';
+
 import routes from './routes';
 
 /**
@@ -11,7 +13,10 @@ import routes from './routes';
  */
 const App = ({ history }) => (
   <ConnectedRouter history={history}>
-    {routes}
+    <div>
+      <Header />
+      {routes}
+    </div>
   </ConnectedRouter>
 );
 

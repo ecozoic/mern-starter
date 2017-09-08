@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { ActionTypes } from '../constants';
 
 export const INITIAL_STATE = {
@@ -34,10 +36,10 @@ export const todosReducer = (prevState = INITIAL_STATE, action) => {
           ...prevState.byId,
           ...action.payload.entities.todos,
         },
-        allIds: [
+        allIds: _.uniq([
           ...prevState.allIds,
           ...action.payload.result,
-        ],
+        ]),
       };
     case ActionTypes.DELETE_TODO_FULFILLED:
       return {
