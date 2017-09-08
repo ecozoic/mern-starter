@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { List } from 'semantic-ui-react';
+
 import { todoShape } from '../../models';
 import TodoComponent from '../Todo';
-
-import styles from './TodoList.scss';
 
 /**
  * Renders a list of todos
@@ -13,16 +13,16 @@ import styles from './TodoList.scss';
  * @param {Function} props.onTodoClick - function to call when todo is clicked
  */
 const TodoList = ({ todos, onTodoClick }) => (
-  <ul className={styles.todoList}>
+  <List animated relaxed size="large" bulleted>
     {todos.map(todo => (
       <TodoComponent
-        key={todo.id}
-        onClick={() => onTodoClick(todo.id)}
+        key={todo._id}
+        onClick={() => onTodoClick(todo._id)}
         completed={todo.completed}
         text={todo.text}
       />
     ))}
-  </ul>
+  </List>
 );
 
 TodoList.propTypes = {

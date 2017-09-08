@@ -1,7 +1,9 @@
 {
-  "name": "react-starter",
-  "version": "5.0.0",
-  "description": "A scaffold for React+Redux+Rxjs UIs powered by Webpack",
+  "name": "ui",
+  "version": "0.0.0",
+  "author": "ecozoic <johnnn.mitchell@gmail.com>",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "postinstall": "yarn build",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
@@ -23,16 +25,6 @@
     "plop": "plop",
     "cosmos": "cross-env NODE_ENV=development cosmos"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ecozoic/react-starter.git"
-  },
-  "author": "John Mitchell <johnnn.mitchell@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ecozoic/react-starter/issues"
-  },
-  "homepage": "https://github.com/ecozoic/react-starter#readme",
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -45,7 +37,7 @@
     "concurrently": "3.5.0",
     "css-loader": "0.28.7",
     "deep-freeze": "0.0.1",
-    "documentation": "5.2.2",
+    "documentation": "5.3.1",
     "enzyme": "2.9.1",
     "enzyme-to-json": "1.5.1",
     "eslint": "4.5.0",
@@ -61,7 +53,7 @@
     "glob": "7.1.2",
     "html-webpack-plugin": "2.30.1",
     "identity-obj-proxy": "3.0.0",
-    "jest": "20.0.4",
+    "jest": "21.0.1",
     "nock": "9.0.14",
     "node-sass": "4.5.3",
     "plop": "1.8.1",
@@ -79,7 +71,7 @@
     "sass-loader": "6.0.6",
     "sasslint-webpack-plugin": "1.0.4",
     "style-loader": "0.18.2",
-    "webpack": "3.5.5",
+    "webpack": "3.5.6",
     "webpack-bundle-analyzer": "2.9.0",
     "webpack-dev-server": "2.7.1",
     "webpack-merge": "4.1.0",
@@ -104,6 +96,7 @@
     "react-router-dom": "4.2.2",
     "react-router-prop-types": "0.0.1",
     "redux": "3.7.2",
+    "redux-form": "7.0.4",
     "redux-observable": "0.16.0",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
@@ -111,8 +104,8 @@
     "semantic-ui-react": "0.72.0"
   },
   "engines": {
-    "node": "6.11.2",
+    "node": "6.11.3",
     "npm": "3.10.10",
-    "yarn": "0.27.5"
+    "yarn": "1.0.0"
   }
 }

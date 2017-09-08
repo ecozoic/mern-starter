@@ -35,11 +35,19 @@ class Config {
   }
 
   /**
-   * Returns current value of API_URL ('http://localhost:8084 if not specified)
+   * Returns current value of API_URL ('http://localhost:8084' if not specified)
    * @static
    */
   static get apiUrl() {
     return process.env.API_URL || 'http://localhost:8084';
+  }
+
+  /**
+   * Returns current value of JWT_STORAGE_KEY ('access_token' if not specified)
+   * @static
+   */
+  static get jwtStorageKey() {
+    return process.env.JWT_STORAGE_KEY || 'access_token';
   }
 }
 

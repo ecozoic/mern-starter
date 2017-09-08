@@ -1,24 +1,50 @@
+import { getAsyncActionTypes } from '../lib';
+
 const ADD_TODO = 'ADD_TODO';
 const TOGGLE_TODO = 'TOGGLE_TODO';
 const FETCH_TODOS = 'FETCH_TODOS';
+const DELETE_TODO = 'DELETE_TODO';
+const LOGIN = 'LOGIN';
+const REGISTER = 'REGISTER';
+const LOGOUT = 'LOGOUT';
+const TOKEN_REMOVED = 'TOKEN_REMOVED';
+const AUTHENTICATE = 'AUTHENTICATE';
 
-const PENDING = 'PENDING';
-const FULFILLED = 'FULFILLED';
-const REJECTED = 'REJECTED';
+export const AsyncSuffixes = {
+  PENDING: '_PENDING',
+  FULFILLED: '_FULFILLED',
+  REJECTED: '_REJECTED',
+};
 
 export const ActionTypes = {
   ADD_TODO,
-  ADD_TODO_PENDING: `${ADD_TODO}_${PENDING}`,
-  ADD_TODO_FULFILLED: `${ADD_TODO}_${FULFILLED}`,
-  ADD_TODO_REJECTED: `${ADD_TODO}_${REJECTED}`,
+  ...getAsyncActionTypes(ADD_TODO),
 
   TOGGLE_TODO,
-  TOGGLE_TODO_PENDING: `${TOGGLE_TODO}_${PENDING}`,
-  TOGGLE_TODO_FULFILLED: `${TOGGLE_TODO}_${FULFILLED}`,
-  TOGGLE_TODO_REJECTED: `${TOGGLE_TODO}_${REJECTED}`,
+  ...getAsyncActionTypes(TOGGLE_TODO),
 
   FETCH_TODOS,
-  FETCH_TODOS_PENDING: `${FETCH_TODOS}_${PENDING}`,
-  FETCH_TODOS_FULFILLED: `${FETCH_TODOS}_${FULFILLED}`,
-  FETCH_TODOS_REJECTED: `${FETCH_TODOS}_${REJECTED}`,
+  ...getAsyncActionTypes(FETCH_TODOS),
+
+  DELETE_TODO,
+  ...getAsyncActionTypes(DELETE_TODO),
+
+  LOGIN,
+  ...getAsyncActionTypes(LOGIN),
+
+  REGISTER,
+  ...getAsyncActionTypes(REGISTER),
+
+  AUTHENTICATE,
+  ...getAsyncActionTypes(AUTHENTICATE),
+
+  LOGOUT,
+  TOKEN_REMOVED,
+};
+
+export const Paths = {
+  HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/register',
+  ADMIN: '/admin',
 };

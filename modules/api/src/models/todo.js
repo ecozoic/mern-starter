@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const todoSchema = new Schema({
+const TodoSchema = new Schema({
   text: {
     type: String,
     required: true,
@@ -11,14 +11,6 @@ const todoSchema = new Schema({
     type: Boolean,
     required: true,
   },
-}, {
-  toJSON: {
-    transform: (doc, ret) => {
-      ret.id = ret._id;
-      delete ret._id;
-      delete ret.__v;
-    },
-  },
 });
 
-module.exports = mongoose.model('todo', todoSchema);
+module.exports = mongoose.model('todo', TodoSchema);

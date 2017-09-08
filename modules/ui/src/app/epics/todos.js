@@ -10,10 +10,13 @@ import {
   toggleTodoFulfilled,
   toggleTodoPending,
   toggleTodoRejected,
+  deleteTodoFulfilled,
+  deleteTodoPending,
+  deleteTodoRejected,
 } from '../actions';
-import { getTodos, addTodo, toggleTodo } from '../api';
+import { getTodos, addTodo, toggleTodo, deleteTodo } from '../api';
 import { ActionTypes } from '../constants';
-import { getTodoById } from '../selectors';
+import { getTodoById, getToken } from '../selectors';
 
 export const fetchTodosEpic = (action$, store) =>
   action$
@@ -38,9 +41,19 @@ export const addTodoEpic = (action$, store) =>
 export const toggleTodoEpic = (action$, store) =>
   action$
     .ofType(ActionTypes.TOGGLE_TODO)
-    .do(action => store.dispatch(toggleTodoPending(action.payload.id)))
+    .do(action => store.dispatch(toggleTodoPending(action.payload._id)))
     .mergeMap(action =>
-      toggleTodo(getTodoById(store.getState(), action.payload.id))
+      toggleTodo(getTodoById(store.getState(), action.payload._id))
         .map(todo => toggleTodoFulfilled(todo))
-        .catch(error => Observable.of(toggleTodoRejected(error, action.payload.id))),
+        .catch(error => Observable.of(toggleTodoRejected(error, action.payload._id))),
+    );
+
+export const deleteTodoEpic = (action$, store) =>
+  action$
+    .ofType(ActionTypes.DELETE_TODO)
+    .do(action => store.dispatch(deleteTodoPending(action.payload._id)))
+    .mergeMap(action =>
+      deleteTodo(action.payload._id, getToken(store.getState()))
+        .map(() => deleteTodoFulfilled(action.payload._id))
+        .catch(error => Observable.of(deleteTodoRejected(error, action.payload._id))),
     );
