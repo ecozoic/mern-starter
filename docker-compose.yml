@@ -1,8 +1,9 @@
-version: "3"
+version: "3.3"
 services:
   ui:
     build: ./modules/ui
     image: ui
+    container_name: ui
     ports:
       - 8083:8080
     volumes:
@@ -10,6 +11,7 @@ services:
   api:
     build: ./modules/api
     image: api
+    container_name: api
     ports:
       - 8084:8080
     depends_on:
@@ -17,6 +19,7 @@ services:
       - redis
   nginx:
     image: nginx
+    container_name: nginx
     ports:
       - 8080:80
     volumes:
@@ -27,20 +30,24 @@ services:
       - ui
   mongo:
     image: mongo
+    container_name: mongo
     ports:
       - 27017:27017
   redis:
     image: redis
+    container_name: redis
     ports:
       - 6379:6379
   mongo-express:
     image: mongo-express
+    container_name: mongo-express
     ports:
       - 8082:8081
     depends_on:
       - mongo
   redis-commander:
     image: tenstartups/redis-commander
+    container_name: redis-commander
     command: --redis-host redis
     ports:
       - 8081:8081
@@ -48,6 +55,7 @@ services:
       - redis
   portainer:
     image: portainer/portainer
+    container_name: portainer
     ports:
       - 9000:9000
     volumes:
