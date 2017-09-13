@@ -32,7 +32,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - data_db:/data/db
+      - data_mongo:/data/db
   redis:
     image: redis
     container_name: redis
@@ -53,6 +53,49 @@ services:
       - 8081:8081
     depends_on:
       - redis
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - data_postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  pgweb:
+    image: sosedoff/pgweb
+    container_name: pgweb
+    restart: always
+    ports:
+      - 8083:8081
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+    depends_on:
+      - postgres
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+    volumes:
+      - data_elastic:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.6.0
+    container_name: kibana
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+  neo4j:
+    image: neo4j
+    container_name: neo4j
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - data_neo4j:/data
+    environment:
+      - NEO4J_AUTH=none
   portainer:
     image: portainer/portainer
     container_name: portainer
@@ -64,5 +107,8 @@ services:
       - data_portainer:/data
 volumes:
   dist:
-  data_db:
+  data_mongo:
+  data_postgres:
+  data_elastic:
   data_portainer:
+  data_neo4j:
