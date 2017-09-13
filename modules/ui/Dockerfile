@@ -8,4 +8,4 @@ ENV HOST=0.0.0.0 \
     BASENAME=/ \
     JWT_STORAGE_KEY=access_token
 
-CMD [ "yarn" ]
+RUN yarn
