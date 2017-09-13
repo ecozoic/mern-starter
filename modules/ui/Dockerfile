@@ -9,3 +9,8 @@ ENV HOST=0.0.0.0 \
     JWT_STORAGE_KEY=access_token
 
 RUN yarn
+
+FROM nginx
+
+WORKDIR /usr/share/nginx/html
+COPY --from=0 /opt/ui/dist .

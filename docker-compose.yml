@@ -3,36 +3,29 @@ services:
   ui:
     build: ./modules/ui
     image: ui
-    container_name: ui
+    container_name: nginx
+    ports:
+      - 8080:80
     volumes:
-      - dist:/opt/ui/dist
+      - ./modules/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
   api:
     build: ./modules/api
     image: api
-    container_name: api
+    container_name: node
     ports:
       - 8084:8080
     depends_on:
       - mongo
       - redis
-  nginx:
-    image: nginx
-    container_name: nginx
-    ports:
-      - 8080:80
-    volumes:
-      - dist:/usr/share/nginx/html:ro
-      - ./modules/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - api
-      - ui
   mongo:
     image: mongo
     container_name: mongo
     ports:
       - 27017:27017
     volumes:
-      - data_db:/data/db
+      - data_mongo:/data/db
   redis:
     image: redis
     container_name: redis
@@ -63,6 +56,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - data_portainer:/data
 volumes:
-  dist:
-  data_db:
+  data_mongo:
   data_portainer:
