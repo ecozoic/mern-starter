@@ -14,6 +14,8 @@ services:
       - ./modules/conf/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - api
+    networks:
+      - frontend
   api:
     build: ./modules/api
     image: api
@@ -30,6 +32,9 @@ services:
     depends_on:
       - mongo
       - redis
+    networks:
+      - frontend
+      - backend
   mongo:
     image: mongo
     container_name: mongo
@@ -37,11 +42,15 @@ services:
       - 27017:27017
     volumes:
       - data_mongo:/data/db
+    networks:
+      - backend
   redis:
     image: redis
     container_name: redis
     ports:
       - 6379:6379
+    networks:
+      - backend
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -49,6 +58,9 @@ services:
       - 8082:8081
     depends_on:
       - mongo
+    networks:
+      - backend
+      - tools
   redis-commander:
     image: tenstartups/redis-commander
     container_name: redis-commander
@@ -57,6 +69,9 @@ services:
       - 8081:8081
     depends_on:
       - redis
+    networks:
+      - backend
+      - tools
   portainer:
     image: portainer/portainer
     container_name: portainer
@@ -66,6 +81,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data_portainer:/data
+    networks:
+      - tools
 volumes:
   data_mongo:
   data_portainer:
+networks:
+  frontend:
+  backend:
+  tools:
