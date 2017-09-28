@@ -24,14 +24,14 @@ describe('<TodoList />', () => {
       />,
     );
 
-    expect(todoList.find('ul').length).toBe(1);
+    expect(todoList.find('List').length).toBe(1);
   });
 
   it('renders a todo for each todo in props', () => {
     const todos = [
-      { id: '1', text: 'Todo 1', completed: false },
-      { id: '2', text: 'Todo 2', completed: true },
-      { id: '3', text: 'Todo 3', completed: false },
+      { _id: '1', text: 'Todo 1', completed: false },
+      { _id: '2', text: 'Todo 2', completed: true },
+      { _id: '3', text: 'Todo 3', completed: false },
     ];
 
     const todoList = shallow(
@@ -46,7 +46,7 @@ describe('<TodoList />', () => {
 
   it('renders todo with proper props', () => {
     const todos = [
-      { id: '1', text: 'Todo 1', completed: false },
+      { _id: '1', text: 'Todo 1', completed: false },
     ];
 
     const todoList = shallow(
@@ -65,7 +65,7 @@ describe('<TodoList />', () => {
 
   it('sets the todo id as the key', () => {
     const todos = [
-      { id: '1', text: 'Todo 1', completed: false },
+      { _id: '1', text: 'Todo 1', completed: false },
     ];
 
     const todoList = shallow(
@@ -82,7 +82,7 @@ describe('<TodoList />', () => {
     const mockFn = jest.fn();
 
     const todos = [
-      { id: '1', text: 'Todo 1', completed: false },
+      { _id: '1', text: 'Todo 1', completed: false },
     ];
 
     const todoList = shallow(

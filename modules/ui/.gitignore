@@ -6,3 +6,6 @@ docs
 
 # webpack visualizer
 webpack/stats
+
+# jest local storage
+jest/scratch

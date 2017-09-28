@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TodoList /> renders without crashing 1`] = `
-<ul
-  className="todoList"
+<List
+  animated={true}
+  bulleted={true}
+  relaxed={true}
+  size="large"
 />
 `;

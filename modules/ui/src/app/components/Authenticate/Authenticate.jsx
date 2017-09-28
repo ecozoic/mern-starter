@@ -13,7 +13,7 @@ class Authenticate extends React.Component {
   constructor(props) {
     super(props);
 
-    const token = window.localStorage.getItem(config.jwtStorageKey);
+    const token = localStorage.getItem(config.jwtStorageKey);
 
     this.state = {
       initialized: !token,

@@ -27,7 +27,7 @@ class TodoTable extends Component {
 
         <Table.Body>
           {todos.map(todo => (
-            <Table.Row>
+            <Table.Row key={todo._id}>
               <Table.Cell>{todo._id}</Table.Cell>
               <Table.Cell>{todo.text}</Table.Cell>
               <Table.Cell>{todo.completed.toString()}</Table.Cell>

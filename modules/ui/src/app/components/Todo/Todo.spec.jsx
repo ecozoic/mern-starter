@@ -27,7 +27,7 @@ describe('<Todo />', () => {
     );
 
     const expected = 'Todo';
-    const actual = todo.find('li').text();
+    const actual = todo.find('ListItem').render().text();
 
     expect(actual).toBe(expected);
   });
@@ -41,7 +41,7 @@ describe('<Todo />', () => {
       />,
     );
 
-    const classes = todo.find('li').props().className.split(' ');
+    const classes = todo.find('ListItem').props().className.split(' ');
 
     expect(classes.indexOf('completed') > -1).toEqual(true);
   });
@@ -55,7 +55,7 @@ describe('<Todo />', () => {
       />,
     );
 
-    const classes = todo.find('li').props().className.split(' ');
+    const classes = todo.find('ListItem').props().className.split(' ');
 
     expect(classes.indexOf('completed') > -1).toEqual(false);
   });
@@ -71,7 +71,7 @@ describe('<Todo />', () => {
       />,
     );
 
-    todo.find('li').simulate('click');
+    todo.find('ListItem').simulate('click');
 
     expect(mockFn).toHaveBeenCalledTimes(1);
   });

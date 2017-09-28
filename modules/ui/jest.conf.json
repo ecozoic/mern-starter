@@ -13,6 +13,10 @@
     "\\.(css|less|sass|scss|styl)$": "identity-obj-proxy"
   },
   "roots": ["src"],
+  "setupFiles": [
+    "raf/polyfill",
+    "<rootDir>/jest/setup.js"
+  ],
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "testEnvironment": "jsdom",
   "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
