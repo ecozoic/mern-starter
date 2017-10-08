@@ -11,7 +11,10 @@
     "import/prefer-default-export": 0,
     "react/no-unused-prop-types": 0,
     "react/jsx-boolean-value": 0,
+    "react/no-typos": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "function-paren-newline": 0,
     "no-console": 0,
     "no-underscore-dangle": 0
   }

@@ -60,8 +60,7 @@ export const logoutEpic = action$ =>
     .do(() =>
       window.localStorage.removeItem(config.jwtStorageKey),
     )
-    .map(() => tokenRemoved())
-  ;
+    .map(() => tokenRemoved());
 
 export const authenticateEpic = (action$, store) =>
   action$
