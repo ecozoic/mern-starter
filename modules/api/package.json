@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "bluebird": "3.5.0",
+    "bluebird": "3.5.1",
     "body-parser": "1.18.2",
     "compression": "1.7.1",
     "cross-env": "5.0.5",
     "dotenv": "4.0.0",
     "errorhandler": "1.5.0",
-    "express": "4.16.0",
+    "express": "4.16.1",
     "jsonwebtoken": "8.0.1",
-    "mongoose": "4.11.13",
+    "mongoose": "4.12.1",
     "morgan": "1.9.0",
     "passport": "0.4.0",
     "passport-jwt": "3.0.0",
@@ -30,8 +30,8 @@
     "nodemon": "1.12.1"
   },
   "engines": {
-    "node": "6.11.3",
+    "node": "6.11.4",
     "npm": "3.10.10",
-    "yarn": "0.27.5"
+    "yarn": "1.1.0"
   }
 }
