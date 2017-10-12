@@ -13,8 +13,12 @@ import {
   authenticateRejected,
 } from '../actions';
 import { login, register, authenticate } from '../api';
-import config from '../config';
 import { ActionTypes } from '../constants';
+
+const jwtStorageKey = process.env.JWT_STORAGE_KEY;
+
+// TODO: set local storage as epic dep for testability
+// TODO: use switchmap
 
 export const loginEpic = (action$, store) =>
   action$
@@ -26,7 +30,7 @@ export const loginEpic = (action$, store) =>
         .do((loginAction) => {
           action.payload.resolve();
 
-          window.localStorage.setItem(config.jwtStorageKey, loginAction.payload.token);
+          localStorage.setItem(jwtStorageKey, loginAction.payload.token);
         })
         .catch((error) => {
           action.payload.reject();
@@ -45,7 +49,7 @@ export const registerEpic = (action$, store) =>
         .do((registerAction) => {
           action.payload.resolve();
 
-          window.localStorage.setItem(config.jwtStorageKey, registerAction.payload.token);
+          localStorage.setItem(jwtStorageKey, registerAction.payload.token);
         })
         .catch((error) => {
           action.payload.reject();
@@ -54,11 +58,12 @@ export const registerEpic = (action$, store) =>
         }),
     );
 
+// TODO: ignoreElements
 export const logoutEpic = action$ =>
   action$
     .ofType(ActionTypes.LOGOUT)
     .do(() =>
-      window.localStorage.removeItem(config.jwtStorageKey),
+      localStorage.removeItem(jwtStorageKey),
     )
     .map(() => tokenRemoved());
 
@@ -70,10 +75,10 @@ export const authenticateEpic = (action$, store) =>
       authenticate(action.payload.token)
         .map(userInfo => authenticateFulfilled(userInfo.user, userInfo.token))
         .do(authenticateAction =>
-          window.localStorage.setItem(config.jwtStorageKey, authenticateAction.payload.token),
+          localStorage.setItem(jwtStorageKey, authenticateAction.payload.token),
         )
         .catch((error) => {
-          window.localStorage.removeItem(config.jwtStorageKey);
+          localStorage.removeItem(jwtStorageKey);
 
           return Observable.of(authenticateRejected(error));
         }),

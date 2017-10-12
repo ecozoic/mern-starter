@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import config from '../../config';
-
 class Authenticate extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
@@ -13,7 +11,7 @@ class Authenticate extends React.Component {
   constructor(props) {
     super(props);
 
-    const token = localStorage.getItem(config.jwtStorageKey);
+    const token = localStorage.getItem(process.env.JWT_STORAGE_KEY);
 
     this.state = {
       initialized: !token,
