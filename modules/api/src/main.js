@@ -1,5 +1,26 @@
 // load environment configuration
+const Joi = require('joi');
 require('dotenv').config();
+
+const schema = Joi.object().keys({
+  PORT: Joi.string().alphanum().required(),
+  MONGO_HOST: Joi.string().hostname().required(),
+  MONGO_PORT: Joi.string().alphanum().required(),
+  MONGO_DB: Joi.string().alphanum().required(),
+  JWT_SECRET: Joi.string().alphanum().required(),
+  JWT_EXPIRE_SECONDS: Joi.string().alphanum().required(),
+  NODE_ENV: Joi.string().valid('production', 'development').required(),
+}).unknown(true);
+
+const result = Joi.validate(process.env, schema);
+
+if (result.error) {
+  console.log('Configuration invalid! :(');
+  console.log(result.error.details);
+  process.exit(1);
+} else {
+  console.log('Configuration valid! :)');
+}
 
 // express + middleware
 const express = require('express');
@@ -8,26 +29,24 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const errorHandler = require('errorhandler');
 
-// mongo + redis + bluebird
+// mongo + bluebird
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
-const redis = require('redis');
 
 // passport + jwt
 const passport = require('passport');
 
 const { local, jwt } = require('./auth/strategy');
-const config = require('./config');
 const User = require('./models/user');
 const todoRouter = require('./routers/todo');
 
-// set mongoose and redis promises
+const { MONGO_HOST, MONGO_PORT, MONGO_DB, NODE_ENV, PORT } = process.env;
+
+// set mongoose promises
 mongoose.Promise = bluebird;
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
 
 // test mongo connection
-mongoose.connect(config.MONGO_URL, {
+mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}`, {
   useMongoClient: true,
 })
   .then(() => {
@@ -36,21 +55,6 @@ mongoose.connect(config.MONGO_URL, {
     console.log('Mongo connection failed :(');
     console.log(err);
   });
-
-// test redis connection
-const redisClient = redis.createClient({
-  host: config.REDIS_HOST,
-  port: config.REDIS_PORT,
-});
-
-redisClient.on('ready', () => {
-  console.log('Connected to Redis! :)');
-});
-
-redisClient.on('error', (err) => {
-  console.log('Redis connection failed :(');
-  console.log(err);
-});
 
 // setup passport
 passport.use(jwt);
@@ -64,7 +68,7 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-if (config.NODE_ENV === 'development') {
+if (NODE_ENV === 'development') {
   app.use(morgan('tiny'));
 }
 
@@ -74,7 +78,7 @@ app.use((req, res) => {
   res.status(404).send('We ain\'t found shit');
 });
 
-if (config.NODE_ENV === 'development') {
+if (NODE_ENV === 'development') {
   app.use(errorHandler());
 } else {
   app.use((err, req, res) => {
@@ -82,6 +86,6 @@ if (config.NODE_ENV === 'development') {
   });
 }
 
-app.listen(config.PORT, () => {
-  console.log(`App listening on port: ${config.PORT}`);
+app.listen(PORT, () => {
+  console.log(`App listening on port: ${PORT}`);
 });

@@ -3,6 +3,9 @@ FROM node:6.11.4
 COPY . /opt/ui
 WORKDIR /opt/ui
 
+ARG BASENAME
+ARG JWT_STORAGE_KEY
+
 RUN yarn
 
 FROM nginx

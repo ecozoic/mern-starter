@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const config = require('../config');
-
-const JWT_EXPIRE_IN_SECONDS = 3600;
+const { JWT_SECRET, JWT_EXPIRE_SECONDS } = process.env;
 
 const setUserInfo = (request) => {
   return {
@@ -12,8 +10,8 @@ const setUserInfo = (request) => {
 };
 
 const generateToken = (user) => {
-  return jwt.sign(user, config.JWT_SECRET, {
-    expiresIn: JWT_EXPIRE_IN_SECONDS,
+  return jwt.sign(user, JWT_SECRET, {
+    expiresIn: JWT_EXPIRE_SECONDS,
   });
 };
 

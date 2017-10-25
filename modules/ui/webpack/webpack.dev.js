@@ -3,19 +3,13 @@ const webpack = require('webpack');
 
 const { PORT, HOST, BASENAME, API_URL } = process.env;
 
-// set defaults
-const port = +PORT || 8080;
-const host = HOST || 'localhost';
-const publicPath = BASENAME || '/';
-const apiUrl = API_URL || 'http://localhost:8084';
-
 module.exports = {
   entry: {
     polyfill: './src/polyfill',
     vendor: './src/vendor',
     app: [
       'react-hot-loader/patch',
-      `webpack-dev-server/client?http://${host}:${port}`,
+      `webpack-dev-server/client?http://${HOST}:${PORT}`,
       'webpack/hot/only-dev-server',
       './src/main.hmr',
     ],
@@ -25,7 +19,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath,
+    publicPath: BASENAME,
     filename: 'assets/js/[name].js',
   },
 
@@ -62,11 +56,11 @@ module.exports = {
     stats: 'minimal',
     compress: true,
     contentBase: path.resolve(__dirname, '../dist'),
-    publicPath,
-    port,
-    host,
+    publicPath: BASENAME,
+    port: PORT,
+    host: HOST,
     proxy: {
-      '/api': apiUrl,
+      '/api': API_URL,
     },
   },
 };

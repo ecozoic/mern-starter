@@ -2,8 +2,9 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 
-const config = require('../config');
 const User = require('../models/user');
+
+const { JWT_SECRET } = process.env;
 
 const localLogin = new LocalStrategy((username, password, done) => {
   User.findOne({ username }, (err, user) => {
@@ -31,7 +32,7 @@ const localLogin = new LocalStrategy((username, password, done) => {
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: config.JWT_SECRET,
+  secretOrKey: JWT_SECRET,
 };
 
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {

@@ -14,13 +14,12 @@ This project uses a slightly modified MERN acronym:
 
 M - MongoDB  
 E - Express  
-R - React+Redux+Rxjs+Redis  
+R - React+Redux+Rxjs  
 N - Node+Nginx  
 
 ## Features
 ### Persistence Layer
 * MongoDB + Mongoose ORM
-* Optional Redis support  
 
 ### API Layer
 * Express REST API
@@ -40,7 +39,6 @@ N - Node+Nginx
 * Develop the UI with Webpack-Dev-Server and Redux-DevTools to hot reload and time travel debug
 * Portainer to manage your Docker containers, volumes, networks, etc.
 * Mongo-Express web GUI to manage Mongo
-* Redis-Commander web GUI to manage Redis
 
 ## Get Started
 Clone the repo:
@@ -65,7 +63,7 @@ docker-compose up -d
 To run UI locally:
 ```
 docker-compose up -d
-docker stop nginx
+docker stop ui
 
 cd modules/ui
 
@@ -104,18 +102,16 @@ docker-compose down --volumes
 ## Ports
 By default, this project will bind to the following ports on the host machine:
 
-* NGINX - [http://localhost:8080](http://localhost:8080)
-* Redis-Commander - [http://localhost:8081](http://localhost:8081)
+* UI - [http://localhost:8080](http://localhost:8080)
+* API - [http://localhost:8081](http://localhost:8081)
 * Mongo-Express - [http://localhost:8082](http://localhost:8082)
-* Express API - [http://localhost:8084](http://localhost:8084)
 * MongoDB - [http://localhost:27017](http://localhost:27017)
-* Redis - [http://localhost:6379](http://localhost:6379)
 * Portainer - [http://localhost:9000](http://localhost:9000)
 
 ## Project Roadmap
 * SSL support
 * Improve NGINX caching
 * More unit test coverage
-* Improve API documentation
+* Improve documentation
 * GraphQL?
 * Document deployment process for DigitalOcean droplets

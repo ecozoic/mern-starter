@@ -21,17 +21,16 @@ services:
     image: api
     container_name: node
     ports:
-      - 8084:8080
+      - 8081:8080
     environment:
       PORT: 8080
       MONGO_HOST: mongo
       MONGO_PORT: 27017
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
+      MONGO_DB: app
       JWT_SECRET: yolo
+      JWT_EXPIRE_SECONDS: 3600
     depends_on:
       - mongo
-      - redis
     networks:
       - frontend
       - backend
@@ -44,13 +43,6 @@ services:
       - data_mongo:/data/db
     networks:
       - backend
-  redis:
-    image: redis
-    container_name: redis
-    ports:
-      - 6379:6379
-    networks:
-      - backend
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -58,17 +50,6 @@ services:
       - 8082:8081
     depends_on:
       - mongo
-    networks:
-      - backend
-      - tools
-  redis-commander:
-    image: tenstartups/redis-commander
-    container_name: redis-commander
-    command: --redis-host redis
-    ports:
-      - 8081:8081
-    depends_on:
-      - redis
     networks:
       - backend
       - tools
