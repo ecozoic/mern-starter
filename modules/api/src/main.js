@@ -2,7 +2,7 @@
 const Joi = require('joi');
 require('dotenv').config();
 
-const schema = Joi.object().keys({
+const configSchema = Joi.object().keys({
   PORT: Joi.string().alphanum().required(),
   MONGO_HOST: Joi.string().hostname().required(),
   MONGO_PORT: Joi.string().alphanum().required(),
@@ -12,7 +12,7 @@ const schema = Joi.object().keys({
   NODE_ENV: Joi.string().valid('production', 'development').required(),
 }).unknown(true);
 
-const result = Joi.validate(process.env, schema);
+const result = Joi.validate(process.env, configSchema);
 
 if (result.error) {
   console.log('Configuration invalid! :(');
@@ -28,6 +28,7 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const errorHandler = require('errorhandler');
+const graphqlHTTP = require('express-graphql');
 
 // mongo + bluebird
 const bluebird = require('bluebird');
@@ -39,6 +40,7 @@ const passport = require('passport');
 const { local, jwt } = require('./auth/strategy');
 const User = require('./models/user');
 const todoRouter = require('./routers/todo');
+const schema = require('./schema');
 
 const { MONGO_HOST, MONGO_PORT, MONGO_DB, NODE_ENV, PORT } = process.env;
 
@@ -73,6 +75,11 @@ if (NODE_ENV === 'development') {
 }
 
 app.use('/api', todoRouter);
+
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: NODE_ENV === 'development',
+}));
 
 app.use((req, res) => {
   res.status(404).send('We ain\'t found shit');
