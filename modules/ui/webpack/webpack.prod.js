@@ -24,7 +24,55 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
+        test: /\.global\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+              },
+            },
+          ],
+        }),
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                camelCase: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                minimize: true,
+              },
+            },
+          ],
+        }),
+      },
+      {
+        test: /\.global\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                minimize: true,
+              },
+            },
+            'postcss-loader',
+            'sass-loader',
+          ],
+        }),
+      },
+      {
+        test: /^((?!\.global).)*\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

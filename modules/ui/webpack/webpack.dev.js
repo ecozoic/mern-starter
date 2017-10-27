@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const { PORT, HOST, BASENAME, API_URL } = process.env;
+const {
+  PORT, HOST, BASENAME, API_URL,
+} = process.env;
 
 module.exports = {
   entry: {
@@ -26,7 +28,42 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
+        test: /\.global\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /^((?!\.global).)*\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.global\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /^((?!\.global).)*\.scss$/,
         use: [
           'style-loader',
           {

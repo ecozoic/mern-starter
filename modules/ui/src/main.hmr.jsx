@@ -12,7 +12,7 @@ import rootReducer from './app/reducers';
 import rootEpic from './app/epics';
 import DevTools from './app/containers/DevTools';
 
-import './main.scss';
+import './main.global.scss';
 
 const store = configureStore(
   [

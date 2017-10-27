@@ -25,16 +25,18 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           name: 'assets/img/[name].[hash:8].[ext]',
+          limit: 8192,
         },
       },
       {
         test: /\.(eot|woff2?|ttf)$/,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           name: 'assets/font/[name].[hash:8].[ext]',
+          limit: 8192,
         },
       },
     ],
