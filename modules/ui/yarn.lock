@@ -1588,9 +1588,9 @@ caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000739"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000739.tgz#be734deb6bed4ed8a69d72fb9078bc6ea6d76ad0"
 
-caniuse-lite@1.0.30000752, caniuse-lite@^1.0.30000748:
-  version "1.0.30000752"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000752.tgz#0a79df520669d92ddc7f57406eed935948263130"
+caniuse-lite@1.0.30000756:
+  version "1.0.30000756"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000756.tgz#3da701c1521b9fab87004c6de7c97fa47dbeaad2"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000718, caniuse-lite@^1.0.30000726:
   version "1.0.30000739"
@@ -1599,6 +1599,10 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000718, caniuse-lite@^1.0.30000726:
 caniuse-lite@^1.0.30000744:
   version "1.0.30000749"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000749.tgz#2ff382865aead8cca35dacfbab04f58effa4c01c"
+
+caniuse-lite@^1.0.30000748:
+  version "1.0.30000752"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000752.tgz#0a79df520669d92ddc7f57406eed935948263130"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2162,9 +2166,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-env@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.1.0.tgz#1f12d6b3777d5847dcf9cf39fbee3c6a76dd5058"
+cross-env@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.1.1.tgz#b6d8ab97f304c0f71dae7277b75fe424c08dfa74"
   dependencies:
     cross-spawn "^5.1.0"
     is-windows "^1.0.0"
@@ -3077,9 +3081,9 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.9.0.tgz#76879d274068261b191fe0f2f56c74c2f4208e8b"
+eslint@4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.10.0.tgz#f25d0d7955c81968c2309aa5c9a229e045176bb7"
   dependencies:
     ajv "^5.2.0"
     babel-code-frame "^6.22.0"
@@ -5825,9 +5829,9 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-nock@9.0.25:
-  version "9.0.25"
-  resolved "https://registry.yarnpkg.com/nock/-/nock-9.0.25.tgz#0eb26c8a1f602919eaa5b488cd99cfa34b259390"
+nock@9.0.27:
+  version "9.0.27"
+  resolved "https://registry.yarnpkg.com/nock/-/nock-9.0.27.tgz#3d6f979fb3bcbd45610778662bae09bfcf282a51"
   dependencies:
     chai ">=1.9.2 <4.0.0"
     debug "^2.2.0"
