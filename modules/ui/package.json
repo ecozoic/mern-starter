@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "postinstall": "yarn build",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "start": "webpack-dashboard -- cross-env NODE_ENV=development webpack-dev-server",
     "test": "yarn jest -- --no-cache --coverage",
     "test:watch": "yarn jest -- --watch",
     "pretest": "yarn clean:test",
@@ -79,6 +79,7 @@
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-bundle-analyzer": "2.9.0",
+    "webpack-dashboard": "1.0.0",
     "webpack-dev-server": "2.9.3",
     "webpack-merge": "4.1.0",
     "webpack-visualizer-plugin": "0.1.11"

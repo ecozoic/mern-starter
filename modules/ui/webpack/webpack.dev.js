@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const {
   PORT, HOST, BASENAME, API_URL,
@@ -85,6 +86,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new DashboardPlugin(),
   ],
 
   devServer: {
