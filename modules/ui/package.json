@@ -7,8 +7,8 @@
   "scripts": {
     "postinstall": "yarn build",
     "start": "webpack-dashboard -- cross-env NODE_ENV=development webpack-dev-server",
-    "test": "yarn jest -- --no-cache --coverage",
-    "test:watch": "yarn jest -- --watch",
+    "test": "yarn jest --no-cache --coverage",
+    "test:watch": "yarn jest --watch",
     "pretest": "yarn clean:test",
     "jest": "cross-env NODE_ENV=test jest --config jest.conf.json",
     "tdd": "concurrently \"yarn start\" \"yarn test:watch\"",
