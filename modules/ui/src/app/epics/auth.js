@@ -18,13 +18,12 @@ import { ActionTypes } from '../constants';
 const jwtStorageKey = process.env.JWT_STORAGE_KEY;
 
 // TODO: set local storage as epic dep for testability
-// TODO: use switchmap
 
 export const loginEpic = (action$, store) =>
   action$
     .ofType(ActionTypes.LOGIN)
     .do(action => store.dispatch(loginPending(action.payload.username)))
-    .mergeMap(action =>
+    .switchMap(action =>
       login(action.payload.username, action.payload.password)
         .map(userInfo => loginFulfilled(userInfo.user, userInfo.token))
         .do((loginAction) => {
@@ -43,7 +42,7 @@ export const registerEpic = (action$, store) =>
   action$
     .ofType(ActionTypes.REGISTER)
     .do(action => store.dispatch(registerPending(action.payload.username)))
-    .mergeMap(action =>
+    .switchMap(action =>
       register(action.payload.username, action.payload.password)
         .map(userInfo => registerFulfilled(userInfo.user, userInfo.token))
         .do((registerAction) => {
@@ -71,7 +70,7 @@ export const authenticateEpic = (action$, store) =>
   action$
     .ofType(ActionTypes.AUTHENTICATE)
     .do(() => store.dispatch(authenticatePending()))
-    .mergeMap(action =>
+    .switchMap(action =>
       authenticate(action.payload.token)
         .map(userInfo => authenticateFulfilled(userInfo.user, userInfo.token))
         .do(authenticateAction =>
